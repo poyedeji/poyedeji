@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bilkay AI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      margin-top: 50px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      margin-bottom: 40px;
+    }
+    button {
+      background: #ff6f61;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255,111,97,0.6);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ff3b2f;
+    }
+    main {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input, select {
+      padding: 12px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    #response {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+      padding: 15px;
+      min-height: 80px;
+      font-size: 1rem;
+      color: #222;
+      text-align: left;
+      overflow-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bilkay AI 🤖</h1>
+    <p>Your friendly AI assistant for data, lessons, and more!</p>
+  </header>
+  <main>
+    <select id="topic">
+      <option value="data">Buy Data Bundles</option>
+      <option value="lesson">Register for Lessons</option>
+      <option value="contact">Contact Support</option>
+    </select>
+    <input type="text" id="userInput" placeholder="Type your message here..." />
+    <button onclick="sendMessage()">Send</button>
+    <div id="response">Awaiting your message...</div>
+  </main>
+
+  <script>
+    function sendMessage() {
+      const topic = document.getElementById('topic').value;
+      const input = document.getElementById('userInput').value.trim();
+      const response = document.getElementById('response');
+
+      if (!input) {
+response.textContent = "Please enter a message.";
+        return;
+      }
+
+      let reply = '';
+
+      if (topic === 'data') {
+        reply = `You asked about buying data bundles. Our cheapest bundle is GHS 5 for 1GB. How much do you want to buy?`;
+      } else if (topic === 'lesson') {
+        reply = `To register for lessons, please deposit GHS 50. Would you like to proceed?`;
+      } else if (topic === 'contact') {
+        reply = `You can reach us at bilkayservices@gmail.com or WhatsApp +233 53 947 8867.`;
+      } else {
+        reply = "Sorry, I didn't understand your request.";
+      }
+
+      response.textContent = reply;
+      document.getElementById('userInput').value = '';
+    }
+  </script>
+</body>
+</html>
+
+
+
